@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karan Bainade Portfolio</title>
+    <style>
+        /* Reset and Global Styles */
+        body, html, ul, li, a, p, h1 {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #333;
+            position: relative;
+        }
+
+        nav .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        nav .nav-links li {
+            margin: 0 15px;
+        }
+
+        nav .nav-links li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        nav .nav-links li a:hover {
+            color: #ffc107;
+        }
+
+        /* Hide menu links by default on small screens */
+        .nav-links.hidden {
+            display: none;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px;
+        }
+
+        /* Profile Section */
+        #profile {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #ffffff 50%, #1e1e1e 50%);
+            padding: 40px;
+            text-align: center;
+        }
+
+        #profile .section__text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #profile .section__text h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #profile .section__text p {
+            font-size: 20px;
+            color: #666;
+        }
+
+        #profile .btn-container {
+            margin-top: 20px;
+        }
+
+        #profile .section__pic-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #profile img {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            border: 5px solid #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Social Links Styles */
+        #socials-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #socials-container .icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #socials-container .icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Resume Button Styles */
+        #resume-button {
+            margin-top: 20px;
+        }
+
+        #resume-button .btn-resume {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #resume-button .btn-resume:hover {
+            background-color: #555;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+            }
+
+            .nav-links.hidden {
+                display: flex;
+            }
+
+            #profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #profile .section__text h1 {
+                font-size: 36px;
+            }
+
+            #profile img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .logo {
+                font-size: 20px;
+            }
+
+            nav .nav-links li a {
+                font-size: 16px;
+            }
+
+            #profile .section__text p {
+                font-size: 16px;
+            }
+
+            #socials-container .icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Karan Bainade</div>
+        <ul class="nav-links hidden">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="section__text">
+            <p class="section__text__p1">Hi, I am</p>
+            <h1>Karan Bainade</h1>
+            <p class="section__text__p2">Software Developer / Full-Stack Developer</p>
+            <div id="socials-container">
+                <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub" class="icon" onclick="location.href='https://github.com/Karanb123/'" />
+                <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" class="icon" onclick="location.href='https://www.linkedin.com/in/karan-bainade-a4b936188/'" />
+                <img src="https://img.icons8.com/ios-filled/50/000000/email.png" alt="Email" class="icon" onclick="location.href='mailto:karanbainade@gmail.com'" />
+            </div>
+            <div id="resume-button">
+                <button class="btn-resume" onclick="location.href='Karan_Bainade_Resume.pdf'">Download Resume</button>
+            </div>
+        </div>
+        <div class="section__pic-container">
+            <img src="kb.jpg" alt="Karan Bainade profile picture" />
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

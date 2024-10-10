@@ -1,0 +1,85 @@
+<!-- Chatbot Interface -->
+<div id="chatbot" class="chatbot-container">
+    <div class="chatbot-header">
+        <h5>Chat with Me!</h5>
+        <button onclick="toggleChatbot()">X</button>
+    </div>
+    <div class="chatbot-body" id="chatbot-body">
+        <div id="chatbot-messages"></div>
+    </div>
+    <input type="text" id="user-input" placeholder="Type a message..." onkeydown="if(event.key === 'Enter') sendMessage()">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<!-- Chatbot Styling -->
+<style>
+    .chatbot-container {
+        position: fixed;
+        bottom: 0;
+        right: 20px;
+        width: 300px;
+        display: none;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .chatbot-header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+    .chatbot-body {
+        height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+    }
+    .chatbot-container input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+</style>
+
+<!-- Chatbot Script -->
+<script>
+    function toggleChatbot() {
+        const chatbot = document.getElementById('chatbot');
+        chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
+    }
+
+    async function sendMessage() {
+        const userInput = document.getElementById('user-input').value;
+        const messageContainer = document.getElementById('chatbot-messages');
+
+        // Display user message
+        const userMessage = document.createElement('div');
+        userMessage.className = 'user-message';
+        userMessage.textContent = userInput;
+        messageContainer.appendChild(userMessage);
+
+        // Send message to chatbot API
+        try {
+            const response = await fetch('/chatbot-api', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            });
+            const data = await response.json();
+
+            // Display chatbot response
+            const botMessage = document.createElement('div');
+            botMessage.className = 'bot-message';
+            botMessage.textContent = data.reply;
+            messageContainer.appendChild(botMessage);
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+
+        document.getElementById('user-input').value = ''; // Clear input
+        messageContainer.scrollTop = messageContainer.scrollHeight; // Scroll to bottom
+    }
+</script>
